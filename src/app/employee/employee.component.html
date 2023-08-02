@@ -1,0 +1,63 @@
+<div class="container">
+  <div class="row">
+    <div class="col-12">
+      <div class="d-flex flex-column gap-2 emp">
+        <ul>
+          <li *ngFor="let emp of employee">
+            <button [class.selected]="emp === selectedEmployee" type="button" (click)="onSelect(emp)">
+              <span class="badge">{{emp.emp_num}}</span>
+              <span class="name">{{emp.emp_name | uppercase }}</span>
+            </button>
+          </li>
+        </ul>
+        <!-- <div>
+          Employee Department Number : <span>{{employees.emp_dept_num}}</span>
+        </div>
+        <div>
+          Employee Designation : <span>{{employees.emp_designation}}</span>
+        </div>
+        <div>
+          Employee Salary : <span>{{employees.emp_salary}}</span>
+        </div>
+        <div>
+          Employee Is Currently Working : <span *ngIf="employees.emp_hasLeft; else elseBlock">Yes</span>
+          <ng-template #elseBlock>No</ng-template>
+        </div> -->
+      </div>
+  </div>
+</div>
+
+<div *ngIf="selectedEmployee">
+  <h4 class="my-2">{{selectedEmployee.emp_name | uppercase}} Details</h4>
+  <div>
+    <div class="my-2">
+      <label for="name" class="me-2">Employee Id :</label>
+      <input type="text" id="name" placeholder="name" disabled [(ngModel)]="selectedEmployee.emp_num">
+    </div>
+    <div class="my-2">
+      <label for="name" class="me-2">Employee Name :</label>
+      <input type="text" id="name" placeholder="name" [disabled]="toggleButon" [(ngModel)]="selectedEmployee.emp_name">
+    </div>
+    <div class="my-2">
+      <label for="name" class="me-2">Employee Department Number :</label>
+      <input type="text" id="name" placeholder="name" [disabled]="toggleButon" [(ngModel)]="selectedEmployee.emp_dept_num">
+    </div>
+    <div class="my-2">
+      <label for="name" class="me-2">Employee Designation :</label>
+      <input type="text" id="name" placeholder="name" [disabled]="toggleButon" [(ngModel)]="selectedEmployee.emp_designation">
+    </div>
+    <div class="my-2">
+      <label for="name" class="me-2">Employee Salary :</label>
+      <input type="text" id="name" placeholder="name" [disabled]="toggleButon" [(ngModel)]="selectedEmployee.emp_salary">
+    </div>
+    <div class="my-2">
+      <label for="name" class="me-2">Employee  Is Currently Working :</label>
+      <input type="text" id="name" placeholder="name" [disabled]="toggleButon" [(ngModel)]="selectedEmployee.emp_hasLeft">
+    </div>
+    <div class="my-2">
+      <button (click)="edit()" class="editBtn">
+        <span>{{btnVal}}</span>
+      </button>
+    </div>
+  </div>
+</div>
